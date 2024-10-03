@@ -7,11 +7,11 @@ const { readFileContent, fileExists } = require('../../_modules/file');
  * @param {http.IncomingMessage} req 
  * @param {http.ServerResponse} res 
  */
-const readHandler = async (req, res) => {
-    const filePath = path.join(__dirname, '../../data/file.txt');
+async function handler(req, res) {
+    const filePath = path.join(process.cwd(), 'data/file.txt'); // Use process.cwd()
 
     try {
-        // checks
+        // Only allow GET requests
         if (req.method !== 'GET') {
             res.writeHead(405, { 'Content-Type': 'text/plain' });
             res.end('Method Not Allowed');
@@ -33,6 +33,6 @@ const readHandler = async (req, res) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Internal Server Error');
     }
-};
+}
 
-module.exports = readHandler;
+module.exports = handler;

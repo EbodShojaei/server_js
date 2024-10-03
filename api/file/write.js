@@ -8,9 +8,8 @@ const path = require('path');
  * @param {http.IncomingMessage} req 
  * @param {http.ServerResponse} res 
  */
-const writeHandler = async (req, res) => {
+async function handler(req, res) {
     try {
-        // checks
         const parsedUrl = url.parse(req.url, true);
         const queryText = parsedUrl.query.text;
 
@@ -19,7 +18,7 @@ const writeHandler = async (req, res) => {
             return res.end('Bad Request: Missing query parameter "text"');
         }
 
-        const filePath = path.join(__dirname, '../../data/file.txt');
+        const filePath = path.join(process.cwd(), 'data/file.txt'); // Use process.cwd()
         await appendToFile(filePath, queryText);
 
         res.writeHead(200, { 'Content-Type': 'text/plain' });
@@ -29,6 +28,6 @@ const writeHandler = async (req, res) => {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Internal Server Error');
     }
-};
+}
 
-module.exports = writeHandler;
+module.exports = handler;
