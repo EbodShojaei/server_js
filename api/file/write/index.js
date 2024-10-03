@@ -21,7 +21,7 @@ module.exports = async (req, res) => {
         let filePath = path.join(process.cwd(), 'tmp/file.txt');
 
         const exists = await fileExists(filePath);
-        if (!exists) filePath = path.join(process.cwd(), 'data/file.txt');
+        if (!exists) filePath = path.join(process.cwd(), 'tmp/data.txt');
         await appendToFile(filePath, text);
 
         res.writeHead(200, { 'Content-Type': 'text/plain' });
