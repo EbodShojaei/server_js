@@ -2,6 +2,7 @@ const url = require('url');
 const dateHandler = require('./date');
 const readHandler = require('./file/read');
 const writeHandler = require('./file/write');
+const deleteHandler = require('./file/delete');
 
 /**
  * Handles the request and routes it to the appropriate handler
@@ -26,6 +27,9 @@ const handler = (req, res) => {
                 break;
             case parsedUrl.pathname.startsWith('/file/write'):
                 writeHandler(req, res);
+                break;
+            case parsedUrl.pathname.startsWith('/file/delete'):
+                deleteHandler(req, res);
                 break;
             default:
                 res.writeHead(404, { 'Content-Type': 'text/plain' });

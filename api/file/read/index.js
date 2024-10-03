@@ -8,7 +8,7 @@ const { readFileContent, fileExists } = require('../../../_modules/file');
  * @param {http.ServerResponse} res 
  */
 module.exports = async (req, res) => {
-    const filePath = path.join(process.cwd(), 'data/file.txt'); // Use process.cwd()
+    const filePath = path.join(process.cwd(), 'data/file.txt');
 
     try {
         // Only allow GET requests
