@@ -18,7 +18,7 @@ module.exports = async (req, res) => {
             return res.end('Bad Request: Missing query parameter "text"');
         }
 
-        const filePath = path.join('/tmp', 'data.txt');
+        const filePath = path.join('/data', 'data.txt');
         await appendToFile(filePath, text);
 
         res.writeHead(200, { 'Content-Type': 'text/plain' });
