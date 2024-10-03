@@ -16,8 +16,12 @@
             "dest": "/api/file/write"
         },
         {
-            "src": "/",
+            "src": "/date",
             "dest": "/api/date"
+        },
+        {
+            "src": "/",
+            "dest": "/api/date/?name=Ebaad"
         }
     ]
 }
