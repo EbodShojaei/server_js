@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/**/*.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/file/read",
+            "dest": "/api/file/read"
+        },
+        {
+            "src": "/file/write",
+            "dest": "/api/file/write"
+        },
+        {
+            "src": "/",
+            "dest": "/api/date"
+        }
+    ]
+}
