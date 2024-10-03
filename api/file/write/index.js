@@ -10,15 +10,15 @@ const path = require('path');
  */
 module.exports = async (req, res) => {
     try {
-        const url = new URL(req.url, `http://${req.headers.host}`);
-        const text = url.searchParams.get('text');
+        const parsedUrl = url.parse(req.url, true);
+        const text = parsedUrl.query.text;
 
         if (!text) {
             res.writeHead(400, { 'Content-Type': 'text/plain' });
             return res.end('Bad Request: Missing query parameter "text"');
         }
 
-        const filePath = path.join(process.cwd(), 'data/file.txt'); // Use process.cwd()
+        const filePath = path.join(process.cwd(), 'data/file.txt');
         await appendToFile(filePath, text);
 
         res.writeHead(200, { 'Content-Type': 'text/plain' });
