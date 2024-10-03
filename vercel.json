@@ -8,20 +8,20 @@
     ],
     "routes": [
         {
-            "src": "/file/read",
+            "src": "/file/read/(.*)",
             "dest": "/api/file/read"
         },
         {
-            "src": "/file/write",
+            "src": "/file/write/(.*)",
             "dest": "/api/file/write"
         },
         {
-            "src": "/date",
+            "src": "/date/(.*)",
             "dest": "/api/date"
         },
         {
             "src": "/",
-            "dest": "/api/date/?name=Ebaad"
+            "dest": "/api/date?name=Ebaad"
         }
     ]
 }
