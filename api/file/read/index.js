@@ -1,5 +1,5 @@
 const path = require('path');
-const { readFileContent, fileExists } = require('../../_modules/file');
+const { readFileContent, fileExists } = require('../../../_modules/file');
 
 /**
  * Handles reading the content of the file.

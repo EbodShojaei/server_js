@@ -1,6 +1,7 @@
 const url = require('url');
 const dateHandler = require('./date');
-const { readHandler, writeHandler } = require('./file');
+const readHandler = require('./file/read');
+const writeHandler = require('./file/write');
 
 /**
  * Handles the request and routes it to the appropriate handler

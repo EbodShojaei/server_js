@@ -1,5 +1,5 @@
 const url = require('url');
-const { appendToFile } = require('../../_modules/file');
+const { appendToFile } = require('../../../_modules/file');
 const path = require('path');
 
 /**
