@@ -127,7 +127,7 @@ http://localhost:7431/file/read
 ├── lang
 │   └── en
 │       └── user.js         # Greeting message template
-├── routes
+├── api
 │   ├── date
 │   │   └── index.js        # Handles date and greeting requests
 │   └── file
@@ -138,7 +138,7 @@ http://localhost:7431/file/read
 ├── lab3_criteria.pdf        # Lab 3 instructions
 ├── README.md               # This file
 ├── server.js               # Main server script
-└── routes/handler.js        # Centralized route handler
+└── api/handler.js        # Centralized route handler
 ```
 
 ## Error Handling
