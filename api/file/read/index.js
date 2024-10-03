@@ -22,7 +22,7 @@ module.exports = async (req, res) => {
 
         if (!exists) {
             res.writeHead(404, { 'Content-Type': 'text/plain' });
-            return res.end(`File not found: ${filePath}`);
+            return res.end(`Error 503: Service Unavailable`);
         }
 
         const data = await readFileContent(filePath);
