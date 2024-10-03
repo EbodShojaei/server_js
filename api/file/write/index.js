@@ -1,5 +1,5 @@
 const url = require('url');
-const { appendToFile } = require('../../../_modules/file');
+const { appendToFile, fileExists } = require('../../../_modules/file');
 const path = require('path');
 
 /**
@@ -10,15 +10,18 @@ const path = require('path');
  */
 module.exports = async (req, res) => {
     try {
-        const parsedUrl = url.parse(req.url, true);
-        const text = parsedUrl.query.text;
+        const url = new URL(req.url, `http://${req.headers.host}`);
+        const text = url.searchParams.get('text');
 
         if (!text) {
             res.writeHead(400, { 'Content-Type': 'text/plain' });
             return res.end('Bad Request: Missing query parameter "text"');
         }
 
-        const filePath = path.join(process.cwd(), 'data/file.txt');
+        let filePath = path.join(process.cwd(), 'tmp/file.txt');
+
+        const exists = await fileExists(filePath);
+        if (!exists) filePath = path.join(process.cwd(), 'data/file.txt');
         await appendToFile(filePath, text);
 
         res.writeHead(200, { 'Content-Type': 'text/plain' });
