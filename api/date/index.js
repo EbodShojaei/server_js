@@ -22,25 +22,7 @@ const dateHandler = (req, res, query = null) => {
 
         if (!queryName) {
             res.writeHead(400, { 'Content-Type': 'text/plain' });
-            res.end('Bad Request: Missing query parameter "name"');
-            return;
-        }
-
-        if (queryName.length < 2) {
-            res.writeHead(400, { 'Content-Type': 'text/plain' });
-            res.end('Bad Request: Name must be at least 2 characters long');
-            return;
-        }
-
-        if (queryName.length > 50) {
-            res.writeHead(400, { 'Content-Type': 'text/plain' });
-            res.end('Bad Request: Name must be at most 50 characters long');
-            return;
-        }
-
-        if (!/^[a-zA-Z]+$/.test(queryName)) {
-            res.writeHead(400, { 'Content-Type': 'text/plain' });
-            res.end('Bad Request: Name must only contain letters');
+            res.end('Bad Request');
             return;
         }
 
