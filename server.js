@@ -1,5 +1,5 @@
 const http = require('http');
-const handler = require('./routes/handler');
+const handler = require('./api/handler');
 
 // Configure server port
 const PORT = process.env.PORT || 7431;
