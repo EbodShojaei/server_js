@@ -7,15 +7,15 @@ const { greeting } = require('../../lang/en/user');
  * @param {http.IncomingMessage} req
  * @param {http.ServerResponse} res
  */
-function handler(req, res) {
+module.exports = (req, res) => {
     try {
-        const parsedUrl = url.parse(req.url, true);
-        const queryName = parsedUrl.query.name || 'Ebaad'; // Default to 'Ebaad' if name is not provided
+        const url = new URL(req.url, `http://${req.headers.host}`);
+        const name = url.searchParams.get('name') || 'Ebaad';
 
         const date = getDate();
         const time = getTime12();
 
-        const responseMessage = greeting.replace('%1', queryName).replace('%2', `${date}, ${time}`);
+        const responseMessage = greeting.replace('%1', name).replace('%2', `${date}, ${time}`);
         const formattedMessage = `
             <div style="
                 text-align: center;
@@ -33,6 +33,4 @@ function handler(req, res) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Internal Server Error');
     }
-}
-
-module.exports = handler;
+};

@@ -7,7 +7,7 @@ const { readFileContent, fileExists } = require('../../../_modules/file');
  * @param {http.IncomingMessage} req 
  * @param {http.ServerResponse} res 
  */
-async function handler(req, res) {
+module.exports = async (req, res) => {
     const filePath = path.join(process.cwd(), 'data/file.txt'); // Use process.cwd()
 
     try {
@@ -33,6 +33,4 @@ async function handler(req, res) {
         res.writeHead(500, { 'Content-Type': 'text/plain' });
         res.end('Internal Server Error');
     }
-}
-
-module.exports = handler;
+};
